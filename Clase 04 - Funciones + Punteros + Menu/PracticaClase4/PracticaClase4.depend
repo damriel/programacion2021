@@ -1,0 +1,17 @@
+# depslib dependency file v1.0
+1616799407 source:c:\users\usuario\documents\programacion 2021\clase 4\practicaclase4\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Lopez.h"
+
+1616799326 source:c:\users\usuario\documents\programacion 2021\clase 4\practicaclase4\lopez.c
+
+1616799236 c:\users\usuario\documents\programacion 2021\clase 4\practicaclase4\lopez.h
+
+1616799407 source:c:\users\usuario\documents\programacion 2021\clase 4 - funciones + punteros + menu\practicaclase4\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Lopez.h"
+
+1616799236 c:\users\usuario\documents\programacion 2021\clase 4 - funciones + punteros + menu\practicaclase4\lopez.h
+

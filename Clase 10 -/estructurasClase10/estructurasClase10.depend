@@ -1,0 +1,25 @@
+# depslib dependency file v1.0
+1618889455 source:c:\users\usuario\documents\programacion 2021\clase 10 -\estructurasclase10\alumno.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"alumno.h"
+
+1618889733 c:\users\usuario\documents\programacion 2021\clase 10 -\estructurasclase10\alumno.h
+
+1618892305 source:c:\users\usuario\documents\programacion 2021\clase 10 -\estructurasclase10\dam.c
+	"dam.h"
+
+1618892031 c:\users\usuario\documents\programacion 2021\clase 10 -\estructurasclase10\dam.h
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+
+1618894679 source:c:\users\usuario\documents\programacion 2021\clase 10 -\estructurasclase10\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"dam.h"
+	"alumno.h"
+

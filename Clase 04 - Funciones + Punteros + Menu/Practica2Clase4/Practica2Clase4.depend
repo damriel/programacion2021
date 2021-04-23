@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1616802360 source:c:\users\usuario\documents\programacion 2021\clase 4\practica2clase4\lopez.c
+	<stdio.h>
+	<stdlib.h>
+	"Lopez.h"
+
+1616802331 c:\users\usuario\documents\programacion 2021\clase 4\practica2clase4\lopez.h
+
+1616801581 source:c:\users\usuario\documents\programacion 2021\clase 4\practica2clase4\main.c
+	<stdio.h>
+	<stdlib.h>
+	"Lopez.h"
+

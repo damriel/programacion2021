@@ -1,0 +1,24 @@
+# depslib dependency file v1.0
+1618877270 source:c:\users\usuario\documents\programacion 2021\clase 9 -\arraysparalelosalumnos\functions.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"functions.h"
+
+1618876959 c:\users\usuario\documents\programacion 2021\clase 9 -\arraysparalelosalumnos\functions.h
+
+1618875133 source:c:\users\usuario\documents\programacion 2021\clase 9 -\arraysparalelosalumnos\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"functions.h"
+	"dam.h"
+
+1618703818 source:c:\users\usuario\documents\programacion 2021\clase 9 -\arraysparalelosalumnos\dam.c
+	"dam.h"
+
+1618703928 c:\users\usuario\documents\programacion 2021\clase 9 -\arraysparalelosalumnos\dam.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

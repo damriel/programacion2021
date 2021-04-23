@@ -1,0 +1,13 @@
+# depslib dependency file v1.0
+1617669788 source:c:\users\usuario\documents\programacion 2021\clase 6 -\clase6vectoresarrrays\main.c
+	<stdio.h>
+	<stdlib.h>
+	"dam.h"
+
+1617669798 source:c:\users\usuario\documents\programacion 2021\clase 6 -\clase6vectoresarrrays\dam.c
+	<stdio.h>
+	<stdlib.h>
+	"dam.h"
+
+1617669686 c:\users\usuario\documents\programacion 2021\clase 6 -\clase6vectoresarrrays\dam.h
+
