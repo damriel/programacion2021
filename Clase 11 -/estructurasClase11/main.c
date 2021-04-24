@@ -5,7 +5,7 @@
 #include "alumno.h"
 #define TAM 10
 
-int inicializarAlumnos(eAlumno arrayAlumnos[], int tam);
+/*int inicializarAlumnos(eAlumno arrayAlumnos[], int tam);
 int cargarAlumnos(eAlumno arrayAlumnos[], int tam);
 void mostrarAlumnos(eAlumno arrayAlumnos[], int tam);
 void harcodearAlumnos(eAlumno arrayAlumnos[], int tam);
@@ -108,33 +108,72 @@ void harcodearAlumnos(eAlumno arrayAlumnos[], int tam)
             arrayAlumnos[i].promedio = ((float)arrayAlumnos[i].nota1+arrayAlumnos[i].nota2)/2;
         }
     }
-}
+}*/
 
-/*typedef struct{
-int legajo;
-char nombre[20];
-int edad;
-char sexo;
-float sueldo;
+typedef struct
+{
+    int dia;
+    int mes;
+    int anio;
+}eFecha;
+
+typedef struct
+{
+    int legajo;
+    char nombre[20];
+    int edad;
+    char sexo; //aca el SO fracciona la memoria y le asigna 4 bytes, no asigna menos
+    float sueldo;
+    eFecha fechaIngreso;
 }eEmpleado;
 
 void mostrarEmpleado(eEmpleado unEmpleado);
+void cargarEmpleado(eEmpleado unEmpleado);
 
 int main()
 {
-    eEmpleado emp1 = {110055, "Lucia", 24, 'f', 67500}; // HARDCODEO
+    eEmpleado emp1 = {110055, "Lucia", 24, 'f', 67500,{23,04,2021}}; // HARDCODEO
+    eEmpleado emp2;
+    eFecha auxFecha = {13,10,1992};
+
+    /*emp2.legajo=emp1.legajo;
+    strcpy(emp2.nombre,emp1.nombre);
+    emp2.edad=emp1.edad;
+    emp2.sexo=emp1.sexo;
+    emp2.sueldo=emp1.sueldo;*/
+
+    emp2 = emp1;
+
 
     mostrarEmpleado(emp1);
+    mostrarEmpleado(emp2);
+
+    emp2.fechaIngreso = auxFecha;
 
     return 0;
 }
 
+void cargarEmpleado(eEmpleado unEmpleado)
+{
+    dam_getNumero(&unEmpleado.legajo,"Ingrese legajo: ","Error.",1,999999,10);
+    dam_getNombre(unEmpleado.nombre,"Ingrese nombre: ","Error.",20,10);
+    dam_getNumero(&unEmpleado.edad,"Ingrese edad: ","Error.",1,199,10);
+    dam_getCaracter(&unEmpleado.sexo,"Ingrese sexo: ","Error.",'f','m',10);
+    dam_getNumeroFlotante(&unEmpleado.sueldo,"Ingrese sueldo: ","Error.",1.00,999999.0,10);
+    dam_getNumero(&unEmpleado.fechaIngreso.dia,"Ingrese dia: ","Error.",1,31,10);
+    dam_getNumero(&unEmpleado.fechaIngreso.mes,"Ingrese mes: ","Error.",1,12,10);
+    dam_getNumero(&unEmpleado.fechaIngreso.anio,"Ingrese anio: ","Error.",1950,2021,10);
+}
+
 void mostrarEmpleado(eEmpleado unEmpleado)
 {
-    printf("%d %s %d %c %.2f\n",
+    printf("%d %s %d %c %.2f %02d/%02d/%d\n",
            unEmpleado.legajo,
            unEmpleado.nombre,
            unEmpleado.edad,
            unEmpleado.sexo,
-           unEmpleado.sueldo);
-}*/
+           unEmpleado.sueldo,
+           unEmpleado.fechaIngreso.dia,
+           unEmpleado.fechaIngreso.mes,
+           unEmpleado.fechaIngreso.anio);
+}

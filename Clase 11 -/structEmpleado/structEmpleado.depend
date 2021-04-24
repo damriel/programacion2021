@@ -1,0 +1,24 @@
+# depslib dependency file v1.0
+1619224492 source:c:\users\usuario\documents\programacion 2021\programacion2021-1g\clase 11 -\estructuraempleado\structempleado\empleado.c
+	<stdio.h>
+	<stdlib.h>
+	"dam.h"
+	"empleado.h"
+
+1619223667 c:\users\usuario\documents\programacion 2021\programacion2021-1g\clase 11 -\estructuraempleado\structempleado\empleado.h
+
+1619224348 source:c:\users\usuario\documents\programacion 2021\programacion2021-1g\clase 11 -\estructuraempleado\structempleado\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"empleado.h"
+
+1618892305 source:c:\users\usuario\documents\programacion 2021\programacion2021-1g\clase 11 -\estructuraempleado\structempleado\dam.c
+	"dam.h"
+
+1618892031 c:\users\usuario\documents\programacion 2021\programacion2021-1g\clase 11 -\estructuraempleado\structempleado\dam.h
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+

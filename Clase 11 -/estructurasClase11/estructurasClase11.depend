@@ -1,0 +1,42 @@
+# depslib dependency file v1.0
+1618889455 source:c:\users\usuario\documents\programacion 2021\programacion2021-1g\clase 11 -\alumno.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"alumno.h"
+
+1618889733 c:\users\usuario\documents\programacion 2021\programacion2021-1g\clase 11 -\alumno.h
+
+1618892305 source:c:\users\usuario\documents\programacion 2021\programacion2021-1g\clase 11 -\dam.c
+	"dam.h"
+
+1618892031 c:\users\usuario\documents\programacion 2021\programacion2021-1g\clase 11 -\dam.h
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+
+1619217413 source:c:\users\usuario\documents\programacion 2021\programacion2021-1g\clase 11 -\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"dam.h"
+	"alumno.h"
+
+1618889455 source:c:\users\usuario\documents\programacion 2021\programacion2021-1g\clase 11 -\estructurasclase11\alumno.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"alumno.h"
+
+1618889733 c:\users\usuario\documents\programacion 2021\programacion2021-1g\clase 11 -\estructurasclase11\alumno.h
+
+1618892305 source:c:\users\usuario\documents\programacion 2021\programacion2021-1g\clase 11 -\estructurasclase11\dam.c
+	"dam.h"
+
+1618892031 c:\users\usuario\documents\programacion 2021\programacion2021-1g\clase 11 -\estructurasclase11\dam.h
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+
