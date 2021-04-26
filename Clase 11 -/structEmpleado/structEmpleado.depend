@@ -22,3 +22,27 @@
 	<ctype.h>
 	<string.h>
 
+1619398120 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 11 -\structempleado\dam.c
+	"dam.h"
+
+1619398126 c:\users\usuario\documents\programacion 2021\programacion2021\clase 11 -\structempleado\dam.h
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+
+1619398432 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 11 -\structempleado\empleado.c
+	<stdio.h>
+	<stdlib.h>
+	"dam.h"
+	"empleado.h"
+
+1619398343 c:\users\usuario\documents\programacion 2021\programacion2021\clase 11 -\structempleado\empleado.h
+
+1619397724 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 11 -\structempleado\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"dam.h"
+	"empleado.h"
+

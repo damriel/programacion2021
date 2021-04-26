@@ -25,5 +25,10 @@ void inicializarEmpleados(eEmpleado arrayEmpleados[], int tam);
 void cargarEmpleado(eEmpleado unEmpleado);
 void cargarEmpleados(eEmpleado arrayEmpleados[], int tam);
 void mostrarUnEmpleado(eEmpleado unEmpleado);
-void mostrarEmpleados(eEmpleado arrayEmpleados[], int tam);
+int mostrarEmpleados(eEmpleado arrayEmpleados[], int tam);
 void ordenarEmpleados(eEmpleado arrayEmpleados[], int tam, int criterio);
+/**********************************************************************************/
+int menuOpciones();
+int altaEmpleado(eEmpleado arrayEmpleados[], int tam);
+int modificarEmpleado(eEmpleado arrayEmpleados[], int tam);
+int bajaEmpleado(eEmpleado arrayEmpleados[], int tam);
