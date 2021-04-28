@@ -22,7 +22,7 @@ void inicializarEmpleados(eEmpleado arrayEmpleados[], int tam)
 
 void cargarEmpleado(eEmpleado unEmpleado)
 {
-    dam_getNumero(&unEmpleado.legajo,"Ingrese legajo: ","Error.\n",1,999999,10);
+    //dam_getNumero(&unEmpleado.legajo,"Ingrese legajo: ","Error.\n",1,999999,10);
     dam_getNombre(unEmpleado.nombre,"Ingrese nombre: ","Error.\n",20,10);
     dam_getNumero(&unEmpleado.edad,"Ingrese edad: ","Error.\n",1,199,10);
     dam_getCaracter(&unEmpleado.sexo,"Ingrese sexo: ","Error.\n",'f','m',10);
@@ -133,13 +133,16 @@ void ordenarEmpleados(eEmpleado arrayEmpleados[], int tam, int criterio)
 int menuOpciones()
 {
     int retorno=0;
+    system("cls");
     printf("      *** ABM DE EMPLEADOS ***\n");
     printf("1) Alta empleado.\n");
     printf("2) Modificar empleado.\n");
     printf("3) Baja empleado.\n");
     printf("4) Listar empleados.\n");
-    printf("5) Salir.\n");
-    if(dam_getNumero(&retorno, "Ingrese una opcion: ","ERROR, opcion invalida.",1,5,10)==-1)
+    printf("5) Ordenar Empleados.\n");
+    printf("6) Informes.\n");
+    printf("7) Salir.\n");
+    if(dam_getNumero(&retorno, "Ingrese una opcion: ","ERROR, opcion invalida.",1,7,10)==-1)
     {
         retorno=-1;
     }
@@ -153,7 +156,7 @@ static int buscarLibre(eEmpleado arrayEmpleados[], int tam)
     {
         for(int i=0; i<tam; i++)
         {
-            if(arrayEmpleados[i].isEmpty==1)
+            if(arrayEmpleados[i].isEmpty)
             {
                 indice=i;
                 break;
@@ -163,30 +166,42 @@ static int buscarLibre(eEmpleado arrayEmpleados[], int tam)
     return indice;
 }
 
-int altaEmpleado(eEmpleado arrayEmpleados[], int tam)
+int altaEmpleado(eEmpleado arrayEmpleados[], int tam, int* pId)
 {
     int retorno=-1;
-    int i;
-    if(arrayEmpleados!=NULL && tam>0)
+    eEmpleado nuevoEmpleado;
+    int indice;
+    if(arrayEmpleados!=NULL && tam>0 && pId!=NULL)
     {
-        i = buscarLibre(arrayEmpleados,tam);
-        if(i!=-1)
+        system("cls");
+        printf("      Alta Empleado\n\n");
+        printf("Legajo: %d\n",*pId);
+        indice = buscarLibre(arrayEmpleados,tam);
+        if(indice!=-1)
         {
-            retorno=0;
-            arrayEmpleados[i].isEmpty=0;
-            /*dam_getNumero(&arrayEmpleados[i].legajo,"Ingrese legajo: ","Error. ",1,999999,10);
-            dam_getNombre(arrayEmpleados[i].nombre,"Ingrese nombre: ","Error. ",20,10);
-            dam_getNumero(&arrayEmpleados[i].edad,"Ingrese edad: ","Error. ",1,199,10);
-            dam_getCaracter(&arrayEmpleados[i].sexo,"Ingrese sexo: ","Error. ",'f','m',10);
-            dam_getNumeroFlotante(&arrayEmpleados[i].sueldo,"Ingrese sueldo: ","Error. ",1.00,999999.0,10);
-            dam_getNumero(&arrayEmpleados[i].fechaIngreso.dia,"Ingrese dia: ","Error. ",1,31,10);
-            dam_getNumero(&arrayEmpleados[i].fechaIngreso.mes,"Ingrese mes: ","Error. ",1,12,10);
-            dam_getNumero(&arrayEmpleados[i].fechaIngreso.anio,"Ingrese anio: ","Error. ",1950,2021,10);*/
-            cargarEmpleado(arrayEmpleados[i]);
+            if(!dam_getNombre(nuevoEmpleado.nombre,"Ingrese nombre: ","Error.\n",20,10)&&
+               !dam_getNumero(&nuevoEmpleado.edad,"Ingrese edad: ","Error.\n",1,199,10)&&
+               !dam_getCaracter(&nuevoEmpleado.sexo,"Ingrese sexo: ","Error.\n",'f','m',10)&&
+               !dam_getNumeroFlotante(&nuevoEmpleado.sueldo,"Ingrese sueldo: ","Error.\n",1.00,999999.0,10)&&
+               !dam_getNumero(&nuevoEmpleado.fechaIngreso.dia,"Ingrese dia: ","Error.\n",1,31,10)&&
+               !dam_getNumero(&nuevoEmpleado.fechaIngreso.mes,"Ingrese mes: ","Error.\n",1,12,10)&&
+               !dam_getNumero(&nuevoEmpleado.fechaIngreso.anio,"Ingrese anio: ","Error.\n",1950,2021,10))
+            {
+                arrayEmpleados[indice]=nuevoEmpleado;
+                arrayEmpleados[indice].isEmpty=0;
+                arrayEmpleados[indice].legajo = *pId;
+                //arrayEmpleados[indice].legajo=pId;
+                //cargarEmpleado(arrayEmpleados[indice]);
+                (*pId)++;
+                retorno=0;
+            }
+            else
+            {
+                printf("Error, no se pudo dar de alta al empleado.");
+            }
         }
         else
         {
-            retorno=-2;
             printf("No hay lugar para cargar mas empleados.\n");
         }
     }
@@ -203,7 +218,7 @@ static int buscarEmpleado(eEmpleado arrayEmpleados[], int tam)
     {
         for(int i=0; i<tam; i++)
         {
-            if(legajoBuscado==arrayEmpleados[i].legajo && arrayEmpleados[i].isEmpty==0)
+            if(legajoBuscado==arrayEmpleados[i].legajo && !arrayEmpleados[i].isEmpty)
             {
                 indice=i;
                 break;
@@ -236,13 +251,7 @@ int modificarEmpleado(eEmpleado arrayEmpleados[], int tam)
     int retorno=-1;
     int indice = buscarEmpleado(arrayEmpleados,tam);
     int opcion;
-    char auxNombre[20];
-    int auxEdad;
-    char auxSexo;
-    float auxSueldo;
-    int auxDia;
-    int auxMes;
-    int auxAnio;
+    eEmpleado auxEmpleado;
     int flagNombre=1;
     int flagSexo=1;
     int flagEdad=1;
@@ -267,21 +276,21 @@ int modificarEmpleado(eEmpleado arrayEmpleados[], int tam)
             switch(opcion)
             {
             case 1:
-                flagNombre = dam_getNombre(auxNombre,"Ingrese nuevo nombre: ","Error. ",20,10);
+                flagNombre = dam_getNombre(auxEmpleado.nombre,"Ingrese nuevo nombre: ","Error. ",20,10);
                 break;
             case 2:
-                flagEdad = dam_getNumero(&auxEdad,"Ingrese neuva edad: ","Error. ",1,199,10);
+                flagEdad = dam_getNumero(&auxEmpleado.edad,"Ingrese neuva edad: ","Error. ",1,199,10);
                 break;
             case 3:
-                flagSexo = dam_getCaracter(&auxSexo,"Ingrese nuevo sexo: ","Error. ",'f','m',10);
+                flagSexo = dam_getCaracter(&auxEmpleado.sexo,"Ingrese nuevo sexo: ","Error. ",'f','m',10);
                 break;
             case 4:
-                flagSueldo = dam_getNumeroFlotante(&auxSueldo,"Ingrese neuvo sueldo: ","Error. ",1.00,999999.0,10);
+                flagSueldo = dam_getNumeroFlotante(&auxEmpleado.sueldo,"Ingrese neuvo sueldo: ","Error. ",1.00,999999.0,10);
                 break;
             case 5:
-                if (!dam_getNumero(&auxDia,"Ingrese nuevo dia: ","Error. ",1,31,10) &&
-                    !dam_getNumero(&auxMes,"Ingrese nuevo mes: ","Error. ",1,12,10) &&
-                    !dam_getNumero(&auxAnio,"Ingrese nuevo anio: ","Error. ",1950,2021,10))
+                if (!dam_getNumero(&auxEmpleado.fechaIngreso.dia,"Ingrese nuevo dia: ","Error. ",1,31,10) &&
+                    !dam_getNumero(&auxEmpleado.fechaIngreso.mes,"Ingrese nuevo mes: ","Error. ",1,12,10) &&
+                    !dam_getNumero(&auxEmpleado.fechaIngreso.anio,"Ingrese nuevo anio: ","Error. ",1950,2021,10))
                 {
                     flagFecha=0;
                 }
@@ -289,27 +298,27 @@ int modificarEmpleado(eEmpleado arrayEmpleados[], int tam)
             case 6:
                 if(!flagNombre)
                 {
-                    strcpy(arrayEmpleados[indice].nombre,auxNombre);
+                    strcpy(arrayEmpleados[indice].nombre,auxEmpleado.nombre);
                 }
                 if(!flagEdad)
                 {
-                    arrayEmpleados[indice].edad=auxEdad;
+                    arrayEmpleados[indice].edad=auxEmpleado.edad;
                 }
                 if(!flagSexo)
                 {
-                    arrayEmpleados[indice].sexo=auxSexo;
+                    arrayEmpleados[indice].sexo=auxEmpleado.sexo;
                 }
                 if(!flagSueldo)
                 {
-                    arrayEmpleados[indice].sueldo=auxSueldo;
+                    arrayEmpleados[indice].sueldo=auxEmpleado.sueldo;
                 }
                 if(!flagFecha)
                 {
-                    arrayEmpleados[indice].fechaIngreso.dia=auxDia;
-                    arrayEmpleados[indice].fechaIngreso.mes=auxMes;
-                    arrayEmpleados[indice].fechaIngreso.anio=auxAnio;
+                    arrayEmpleados[indice].fechaIngreso.dia=auxEmpleado.fechaIngreso.dia;
+                    arrayEmpleados[indice].fechaIngreso.mes=auxEmpleado.fechaIngreso.mes;
+                    arrayEmpleados[indice].fechaIngreso.anio=auxEmpleado.fechaIngreso.anio;
                 }
-                printf("\nEmpleado modificado:\n");
+                printf("\nEmpleado modificado!\n");
                 mostrarUnEmpleado(arrayEmpleados[indice]);
                 printf("Cambios guardados, volviendo al menu principal...\n\n");
                 break;
@@ -323,31 +332,31 @@ int modificarEmpleado(eEmpleado arrayEmpleados[], int tam)
 }
 int bajaEmpleado(eEmpleado arrayEmpleados[], int tam)
 {
-    int retorno=-2;
+    int retorno=-1;
     char confirm='n';
-    int indice=buscarEmpleado(arrayEmpleados,tam);
+    int indice;
+
+    system("cls");
+    printf("     Baja Empleado\n\n");
+    indice=buscarEmpleado(arrayEmpleados, tam);
+
     if(arrayEmpleados!=NULL && tam>0)
     {
-        while(indice==-1)
+        if(indice==-1)
         {
             printf("No se encontro ningun empleado con ese legajo.\n");
-            indice = buscarEmpleado(arrayEmpleados,tam);
-        }
-        printf("Empleado encontrado:\n");
-        printf("Legajo     Nombre   Edad Sexo    Sueldo     Fecha de Ingreso\n");
-        mostrarUnEmpleado(arrayEmpleados[indice]);
-        if(!dam_getCaracter(&confirm,"Seguro desea dar de baja a este empleado? (s/n): ", "ERROR.\n",'s','n',10) && confirm=='s')
-        {
-            arrayEmpleados[indice].isEmpty=1;
-            retorno = 0;
-            printf("El usuario se dio de baja correctamente.\n");
         }
         else
         {
-            printf("Se cancelo la baja o ingreso demasiadas opciones invalidas.\n");
-            retorno = -1;
+            printf("Empleado encontrado:\n");
+            printf("Legajo     Nombre   Edad Sexo    Sueldo     Fecha de Ingreso\n");
+            mostrarUnEmpleado(arrayEmpleados[indice]);
+            if(!dam_getCaracter(&confirm,"Seguro desea dar de baja a este empleado? (s/n): ", "ERROR.\n",'s','n',10) && confirm=='s')
+            {
+                arrayEmpleados[indice].isEmpty=1;
+                retorno = 0;
+            }
         }
-
     }
 
     return retorno;

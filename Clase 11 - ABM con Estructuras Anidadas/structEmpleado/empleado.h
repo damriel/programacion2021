@@ -29,6 +29,6 @@ int mostrarEmpleados(eEmpleado arrayEmpleados[], int tam);
 void ordenarEmpleados(eEmpleado arrayEmpleados[], int tam, int criterio);
 /**********************************************************************************/
 int menuOpciones();
-int altaEmpleado(eEmpleado arrayEmpleados[], int tam);
+int altaEmpleado(eEmpleado arrayEmpleados[], int tam, int* pId);
 int modificarEmpleado(eEmpleado arrayEmpleados[], int tam);
 int bajaEmpleado(eEmpleado arrayEmpleados[], int tam);
