@@ -81,3 +81,38 @@
 	"dam.h"
 	"empleado.h"
 
+1619398120 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 12 - abm + estructuras relacionadas\structempleado\dam.c
+	"dam.h"
+
+1619398126 c:\users\usuario\documents\programacion 2021\programacion2021\clase 12 - abm + estructuras relacionadas\structempleado\dam.h
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+
+1619576622 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 12 - abm + estructuras relacionadas\structempleado\sector.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"sector.h"
+	"empleado.h"
+	"dam.h"
+
+1619487059 c:\users\usuario\documents\programacion 2021\programacion2021\clase 12 - abm + estructuras relacionadas\structempleado\sector.h
+
+1619658091 c:\users\usuario\documents\programacion 2021\programacion2021\clase 12 - abm + estructuras relacionadas\structempleado\empleado.h
+	"sector.h"
+
+1619659526 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 12 - abm + estructuras relacionadas\structempleado\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"dam.h"
+	"empleado.h"
+
+1619658702 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 12 - abm + estructuras relacionadas\structempleado\empleado.c
+	<stdio.h>
+	<stdlib.h>
+	"dam.h"
+	"empleado.h"
+

@@ -29,7 +29,7 @@ int cargarUnEmpleado(eEmpleado* unEmpleado, eSector arraySectores[], int tamSec)
 void cargarEmpleados(eEmpleado arrayEmpleados[], int tam);
 void mostrarUnEmpleado(eEmpleado unEmpleado);
 int mostrarEmpleados(eEmpleado arrayEmpleados[], int tam);
-void ordenarEmpleados(eEmpleado arrayEmpleados[], int tam, int criterio);
+void ordenarEmpleados(eEmpleado arrayEmpleados[], int tam);
 /**********************************************************************************/
 int menuOpciones();
 int altaEmpleado(eEmpleado arrayEmpleados[], int tam, int* pId, eSector arraySectores[], int tamSec);

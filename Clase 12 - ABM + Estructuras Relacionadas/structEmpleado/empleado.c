@@ -2,9 +2,15 @@
 #include <stdlib.h>
 #include "dam.h"
 #include "empleado.h"
-#define POR_EDAD 1
+#define DESCENDENTE 0
+#define ASCENDENTE 1
+#define POR_LEGAJO 1
 #define POR_NOMBRE 2
-#define DOS_CRITERIOS 3
+#define POR_EDAD 3
+#define POR_SEXO 4
+#define POR_SUELDO 5
+#define POR_SECTOR 6
+#define DOS_CRITERIOS 30
 
 static int buscarLibre(eEmpleado arrayEmpleados[], int tam);
 static int buscarEmpleado(eEmpleado arrayEmpleados[], int tam);
@@ -124,42 +130,206 @@ int mostrarEmpleados(eEmpleado arrayEmpleados[], int tam)
     return retorno;
 }
 
-void ordenarEmpleados(eEmpleado arrayEmpleados[], int tam, int criterio)
+int menuOrdenamiento()
 {
-    eEmpleado auxEmpleado;
-    for(int i=0; i<tam-1 && !arrayEmpleados[i].isEmpty; i++)
+    int retorno=0;
+    system("cls");
+    printf("      ORDENAR EMPLEADOS\n");
+    printf("1) Por Legajo (ascendente o descendente)\n");
+    printf("2) Por Nombre (ascendente o descendente)\n");
+    printf("3) Por Edad (ascendente o descendente)\n");
+    printf("4) Por Sexo (ascendente o descendente)\n");
+    printf("5) Por Sueldo (ascendente o descendente)\n");
+    printf("6) Por Sector (ascendente o descendente)\n");
+    printf("     ** Agrupar y Ordenar **\n");
+    printf("7) Por Sexo y Legajo (Ascendentes)\n");
+    printf("8) Por Sexo y Sueldo (Ascendentes)\n");
+    printf("9) Por Sexo y Nombre (Ascendentes)\n");
+    printf("10) Por Sector y Sueldo (Ascendentes)\n");
+    printf("11) Por Sector y Nombre (Ascendentes)\n");
+    printf("12) Volver al menu principal.\n");
+    if(dam_getNumero(&retorno, "Ingrese una opcion: ","ERROR, opcion invalida.",1,12,10)==-1)
     {
-        for(int j=i+1; j<tam && !arrayEmpleados[j].isEmpty; j++)
+        retorno=-1;
+    }
+    return retorno;
+}
+
+int subMenuOrdenamiento()
+{
+    int retorno=0;
+    printf("      ORDENAR EMPLEADOS\n");
+    printf("1) Descendente.\n");
+    printf("2) Ascendente.\n");
+    printf("3) Cancelar.\n");
+    if(dam_getNumero(&retorno, "Ingrese una opcion: ","ERROR, opcion invalida.",1,12,10)==-1)
+    {
+        retorno=-1;
+    }
+    return retorno;
+}
+
+void ordenarEmpleados(eEmpleado arrayEmpleados[], int tam)
+{
+    int criterio;
+    int orden;
+    eEmpleado auxEmpleado;
+    if(arrayEmpleados!=NULL && tam>0)
+    {
+        criterio = menuOrdenamiento();
+        if(criterio>0 && criterio<7)
         {
-            switch(criterio)
+            orden = subMenuOrdenamiento()-1;
+            if(orden==2)
             {
-            case POR_EDAD:
-                //por edad descendente
-                if(arrayEmpleados[i].edad<arrayEmpleados[j].edad)
+                criterio=12;
+            }
+        }
+        for(int i=0; i<tam-1 && !arrayEmpleados[i].isEmpty; i++)
+        {
+            for(int j=i+1; j<tam && !arrayEmpleados[j].isEmpty; j++)
+            {
+                switch(criterio)
                 {
-                    auxEmpleado = arrayEmpleados[i];
-                    arrayEmpleados[i] = arrayEmpleados[j];
-                    arrayEmpleados[j] = auxEmpleado;
-                }
-                break;
-            case POR_NOMBRE:
-                //por nombre ascendente
-                if(strcmp(arrayEmpleados[i].nombre,arrayEmpleados[j].nombre)>0)
-                {
-                    auxEmpleado = arrayEmpleados[i];
-                    arrayEmpleados[i] = arrayEmpleados[j];
-                    arrayEmpleados[j] = auxEmpleado;
-                }
-                break;
-            case DOS_CRITERIOS:
-                //por sexo descendente (z-a) y luego por legajo ascendente
-                if(arrayEmpleados[i].sexo<arrayEmpleados[j].sexo ||
-                  (arrayEmpleados[i].sexo==arrayEmpleados[j].sexo&&
-                   arrayEmpleados[i].legajo>arrayEmpleados[j].legajo))
-                {
-                    auxEmpleado = arrayEmpleados[i];
-                    arrayEmpleados[i] = arrayEmpleados[j];
-                    arrayEmpleados[j] = auxEmpleado;
+                case 1:
+                    if(arrayEmpleados[i].legajo>arrayEmpleados[j].legajo && orden)
+                    {
+                        auxEmpleado = arrayEmpleados[i];
+                        arrayEmpleados[i] = arrayEmpleados[j];
+                        arrayEmpleados[j] = auxEmpleado;
+                    }
+                    else if(arrayEmpleados[i].legajo<arrayEmpleados[j].legajo && !orden)
+                    {
+                        auxEmpleado = arrayEmpleados[i];
+                        arrayEmpleados[i] = arrayEmpleados[j];
+                        arrayEmpleados[j] = auxEmpleado;
+                    }
+                    break;
+                case 2:
+                    if(strcmp(arrayEmpleados[i].nombre,arrayEmpleados[j].nombre)>0 && orden)
+                    {
+                        auxEmpleado = arrayEmpleados[i];
+                        arrayEmpleados[i] = arrayEmpleados[j];
+                        arrayEmpleados[j] = auxEmpleado;
+                    }
+                    if(strcmp(arrayEmpleados[i].nombre,arrayEmpleados[j].nombre)<0 && !orden)
+                    {
+                        auxEmpleado = arrayEmpleados[i];
+                        arrayEmpleados[i] = arrayEmpleados[j];
+                        arrayEmpleados[j] = auxEmpleado;
+                    }
+                    break;
+                case 3:
+                    if(arrayEmpleados[i].edad>arrayEmpleados[j].edad && orden)
+                    {
+                        auxEmpleado = arrayEmpleados[i];
+                        arrayEmpleados[i] = arrayEmpleados[j];
+                        arrayEmpleados[j] = auxEmpleado;
+                    }
+                    else if(arrayEmpleados[i].edad<arrayEmpleados[j].edad && !orden)
+                    {
+                        auxEmpleado = arrayEmpleados[i];
+                        arrayEmpleados[i] = arrayEmpleados[j];
+                        arrayEmpleados[j] = auxEmpleado;
+                    }
+                    break;
+                case 4:
+                    if(arrayEmpleados[i].sexo>arrayEmpleados[j].sexo && orden)
+                    {
+                        auxEmpleado = arrayEmpleados[i];
+                        arrayEmpleados[i] = arrayEmpleados[j];
+                        arrayEmpleados[j] = auxEmpleado;
+                    }
+                    else if(arrayEmpleados[i].sexo<arrayEmpleados[j].sexo && !orden)
+                    {
+                        auxEmpleado = arrayEmpleados[i];
+                        arrayEmpleados[i] = arrayEmpleados[j];
+                        arrayEmpleados[j] = auxEmpleado;
+                    }
+                    break;
+                case 5:
+                    if(arrayEmpleados[i].sueldo>arrayEmpleados[j].sueldo && orden)
+                    {
+                        auxEmpleado = arrayEmpleados[i];
+                        arrayEmpleados[i] = arrayEmpleados[j];
+                        arrayEmpleados[j] = auxEmpleado;
+                    }
+                    else if(arrayEmpleados[i].sueldo<arrayEmpleados[j].sueldo && !orden)
+                    {
+                        auxEmpleado = arrayEmpleados[i];
+                        arrayEmpleados[i] = arrayEmpleados[j];
+                        arrayEmpleados[j] = auxEmpleado;
+                    }
+                    break;
+                case 6:
+                    if(strcmp(arrayEmpleados[i].sector,arrayEmpleados[j].sector)>0 && orden)
+                    {
+                        auxEmpleado = arrayEmpleados[i];
+                        arrayEmpleados[i] = arrayEmpleados[j];
+                        arrayEmpleados[j] = auxEmpleado;
+                    }
+                    if(strcmp(arrayEmpleados[i].sector,arrayEmpleados[j].sector)<0 && !orden)
+                    {
+                        auxEmpleado = arrayEmpleados[i];
+                        arrayEmpleados[i] = arrayEmpleados[j];
+                        arrayEmpleados[j] = auxEmpleado;
+                    }
+                    break;
+                case 7:
+                    if(arrayEmpleados[i].sexo>arrayEmpleados[j].sexo ||
+                      (arrayEmpleados[i].sexo==arrayEmpleados[j].sexo&&
+                       arrayEmpleados[i].legajo>arrayEmpleados[j].legajo))
+                    {
+                        auxEmpleado = arrayEmpleados[i];
+                        arrayEmpleados[i] = arrayEmpleados[j];
+                        arrayEmpleados[j] = auxEmpleado;
+                    }
+                    break;
+                case 8:
+                    if(arrayEmpleados[i].sexo<arrayEmpleados[j].sexo ||
+                      (arrayEmpleados[i].sexo==arrayEmpleados[j].sexo&&
+                       arrayEmpleados[i].sueldo>arrayEmpleados[j].sueldo))
+                    {
+                        auxEmpleado = arrayEmpleados[i];
+                        arrayEmpleados[i] = arrayEmpleados[j];
+                        arrayEmpleados[j] = auxEmpleado;
+                    }
+                    break;
+                case 9:
+                    if(arrayEmpleados[i].sexo<arrayEmpleados[j].sexo ||
+                      (arrayEmpleados[i].sexo==arrayEmpleados[j].sexo&&
+                       strcmp(arrayEmpleados[i].nombre,arrayEmpleados[j].nombre)>0))
+                    {
+                        auxEmpleado = arrayEmpleados[i];
+                        arrayEmpleados[i] = arrayEmpleados[j];
+                        arrayEmpleados[j] = auxEmpleado;
+                    }
+                    break;
+                case 10:
+                    if(strcmp(arrayEmpleados[i].sector,arrayEmpleados[j].sector)>0||
+                      (strcmp(arrayEmpleados[i].sector,arrayEmpleados[j].sector)==0&&
+                       arrayEmpleados[i].sueldo>arrayEmpleados[j].sueldo))
+                    {
+                        auxEmpleado = arrayEmpleados[i];
+                        arrayEmpleados[i] = arrayEmpleados[j];
+                        arrayEmpleados[j] = auxEmpleado;
+                    }
+                    break;
+                case 11:
+                    if(strcmp(arrayEmpleados[i].sector,arrayEmpleados[j].sector)>0||
+                      (strcmp(arrayEmpleados[i].sector,arrayEmpleados[j].sector)==0&&
+                       strcmp(arrayEmpleados[i].nombre,arrayEmpleados[j].nombre)>0))
+                    {
+                        auxEmpleado = arrayEmpleados[i];
+                        arrayEmpleados[i] = arrayEmpleados[j];
+                        arrayEmpleados[j] = auxEmpleado;
+                    }
+                    break;
+                case 12:
+                    printf("Ordenamiento cancelado.\n");
+                    i=tam;
+                    j=tam;
+                    break;
                 }
             }
         }
