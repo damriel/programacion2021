@@ -17,20 +17,22 @@ typedef struct
     char sexo; //aca el SO fracciona la memoria y le asigna 4 bytes, no asigna menos
     float sueldo;
     eFecha fechaIngreso;
-    char sector[20];
+    int idSector;
     int isEmpty;
 }eEmpleado;
 
 #endif // EMPLEADO_H_INCLUDED
 
+int hardcodearEmpleados(eEmpleado arrayEmpleados[], int tam, int cant, int* pLegajo);
+void empleadosSector(eEmpleado arrayEmpleados[], int tam, eSector arraySectores[], int tamSec);
+
 void inicializarEmpleados(eEmpleado arrayEmpleados[], int tam);
-void cargarEmpleado(eEmpleado unEmpleado);
 int cargarUnEmpleado(eEmpleado* unEmpleado, eSector arraySectores[], int tamSec);
 void cargarEmpleados(eEmpleado arrayEmpleados[], int tam);
-void mostrarUnEmpleado(eEmpleado unEmpleado);
-int mostrarEmpleados(eEmpleado arrayEmpleados[], int tam);
-void ordenarEmpleados(eEmpleado arrayEmpleados[], int tam);
+void mostrarUnEmpleado(eEmpleado unEmpleado, eSector sectores[], int tamsec);
+int mostrarEmpleados(eEmpleado arrayEmpleados[], int tam, eSector arraySectores[], int tamSec);
+void ordenarEmpleados(eEmpleado arrayEmpleados[], int tam, eSector arraySectores[], int tamSec);
 int menuOpciones();
 int altaEmpleado(eEmpleado arrayEmpleados[], int tam, int* pId, eSector arraySectores[], int tamSec);
 int modificarEmpleado(eEmpleado arrayEmpleados[], int tam, eSector arraySectores[], int tamSec);
-int bajaEmpleado(eEmpleado arrayEmpleados[], int tam);
+int bajaEmpleado(eEmpleado arrayEmpleados[], int tam, eSector arraySectores[], int tamSec);

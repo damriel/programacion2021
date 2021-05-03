@@ -2,23 +2,73 @@
 #include <stdlib.h>
 #include "dam.h"
 #include "empleado.h"
+#include "sector.h"
+#include "dataWarehouse.h"
 #define DESCENDENTE 0
 #define ASCENDENTE 1
-#define POR_LEGAJO 1
-#define POR_NOMBRE 2
-#define POR_EDAD 3
-#define POR_SEXO 4
-#define POR_SUELDO 5
-#define POR_SECTOR 6
-#define DOS_CRITERIOS 30
+
+//COMIDA -> ID-COMIDA-PRECIO
+//ALMUERZO -> IDdeCOMIDA-IDdeEMPLEADO-ISEMPTY
 
 static int buscarLibre(eEmpleado arrayEmpleados[], int tam);
-static int buscarEmpleado(eEmpleado arrayEmpleados[], int tam);
+static int buscarEmpleado(eEmpleado arrayEmpleados[], int tam, eSector arraySectores[], int tamSec);
 static int menuModificaciones();
 static int menuOrdenamiento();
 static int subMenuOrdenamiento();
 
 /*****************************************************************/
+
+int hardcodearEmpleados(eEmpleado arrayEmpleados[], int tam, int cant, int* pLegajo)
+{
+    int retorno=0;
+    if(arrayEmpleados!=NULL && tam>0 && cant>=0 && cant<=tam && pLegajo!=NULL)
+    {
+        for(int i=0; i<cant; i++)
+        {
+            arrayEmpleados[i].legajo=*pLegajo;
+            (*pLegajo)++;
+            strcpy(arrayEmpleados[i].nombre, nombres[i]);
+            arrayEmpleados[i].edad=edades[i];
+            arrayEmpleados[i].sexo=sexos[i];
+            arrayEmpleados[i].sueldo=sueldos[i];
+            arrayEmpleados[i].fechaIngreso=fechas[i];
+            arrayEmpleados[i].idSector=idSectores[i];
+            arrayEmpleados[i].isEmpty=0;
+        }
+    }
+    return retorno;
+}
+
+void empleadosSector(eEmpleado arrayEmpleados[], int tam, eSector arraySectores[], int tamSec)
+{
+    int auxIdSector;
+    int contador=0;
+    char descripcion[20];
+    system("cls");
+    printf("   INFORME EMPLEADOS POR SECTOR\n");
+    mostrarSectores(arraySectores, tamSec);
+    if(arrayEmpleados!=NULL && tam>0 && arraySectores!=NULL && tamSec>0 && !dam_getNumero(&auxIdSector, "Ingrese el ID del sector: ","ERROR. ", 500,503,10))
+    {
+        cargarDescripcionSector(auxIdSector, arraySectores, tamSec, descripcion);
+        for(int i=0; i<tam; i++)
+        {
+            if(arrayEmpleados[i].idSector==auxIdSector && !arrayEmpleados[i].isEmpty)
+            {
+                mostrarUnEmpleado(arrayEmpleados[i],arraySectores,tamSec);
+                contador++;
+            }
+        }
+        if(!contador)
+        {
+            printf("No hay empleados en el sector %s.\n",descripcion);
+        }
+        else
+        {
+            printf("Hay %d empleados en el sector %s.\n",contador,descripcion);
+        }
+        system("pause");
+    }
+}
 
 void inicializarEmpleados(eEmpleado arrayEmpleados[], int tam)
 {
@@ -28,42 +78,19 @@ void inicializarEmpleados(eEmpleado arrayEmpleados[], int tam)
     }
 }
 
-void cargarEmpleado(eEmpleado unEmpleado)
-{
-    //dam_getNumero(&unEmpleado.legajo,"Ingrese legajo: ","Error.\n",1,999999,10);
-    dam_getNombre(unEmpleado.nombre,"Ingrese nombre: ","Error.\n",20,10);
-    dam_getNumero(&unEmpleado.edad,"Ingrese edad: ","Error.\n",1,199,10);
-    dam_getCaracter(&unEmpleado.sexo,"Ingrese sexo: ","Error.\n",'f','m',10);
-    dam_getNumeroFlotante(&unEmpleado.sueldo,"Ingrese sueldo: ","Error.\n",1.00,999999.0,10);
-    dam_getNumero(&unEmpleado.fechaIngreso.dia,"Ingrese dia: ","Error.\n",1,31,10);
-    dam_getNumero(&unEmpleado.fechaIngreso.mes,"Ingrese mes: ","Error.\n",1,12,10);
-    dam_getNumero(&unEmpleado.fechaIngreso.anio,"Ingrese anio: ","Error.\n",1950,2021,10);
-}
-
 int cargarUnEmpleado(eEmpleado* unEmpleado, eSector arraySectores[], int tamSec)
 {
     int retorno=-1;
-    int auxIdSector;
     if(!dam_getNombre((*unEmpleado).nombre,"Ingrese nombre: ","Error.\n",20,10)&&
        !dam_getNumero(&(*unEmpleado).edad,"Ingrese edad: ","Error.\n",1,199,10)&&
        !dam_getCaracter(&(*unEmpleado).sexo,"Ingrese sexo: ","Error.\n",'f','m',10)&&
        !dam_getNumeroFlotante(&(*unEmpleado).sueldo,"Ingrese sueldo: ","Error.\n",1.00,999999.0,10)&&
        !dam_getNumero(&(*unEmpleado).fechaIngreso.dia,"Ingrese dia: ","Error.\n",1,31,10)&&
        !dam_getNumero(&(*unEmpleado).fechaIngreso.mes,"Ingrese mes: ","Error.\n",1,12,10)&&
-       !dam_getNumero(&(*unEmpleado).fechaIngreso.anio,"Ingrese anio: ","Error.\n",1950,2021,10))
+       !dam_getNumero(&(*unEmpleado).fechaIngreso.anio,"Ingrese anio: ","Error.\n",1950,2021,10)&&
+       !mostrarSectores(arraySectores, tamSec)&&
+       !dam_getNumero(&(*unEmpleado).idSector,"Ingrese el ID del sector: ","Error. ",500,503,10))
     {
-        mostrarSectores(arraySectores, tamSec);
-        if(!dam_getNumero(&auxIdSector,"Ingrese el ID del sector: ","Error. ",500,503,10))
-        {
-            for(int i=0; i<tamSec; i++)
-            {
-                if(arraySectores[i].id==auxIdSector)
-                {
-                    strcpy((*unEmpleado).sector,arraySectores[i].descripcion);
-                    break;
-                }
-            }
-        }
         retorno=0;
     }
     return retorno;
@@ -85,8 +112,10 @@ void cargarEmpleados(eEmpleado arrayEmpleados[], int tam)
     }
 }
 
-void mostrarUnEmpleado(eEmpleado unEmpleado)
+void mostrarUnEmpleado(eEmpleado unEmpleado, eSector arraySectores[], int tamSec)
 {
+    char descripcion[20];
+    cargarDescripcionSector(unEmpleado.idSector, arraySectores, tamSec, descripcion);
     printf("%6d %10s    %2d    %c    %9.2f      %02d/%02d/%d        %10s\n",unEmpleado.legajo,
                                                                             unEmpleado.nombre,
                                                                             unEmpleado.edad,
@@ -95,11 +124,11 @@ void mostrarUnEmpleado(eEmpleado unEmpleado)
                                                                             unEmpleado.fechaIngreso.dia,
                                                                             unEmpleado.fechaIngreso.mes,
                                                                             unEmpleado.fechaIngreso.anio,
-                                                                            unEmpleado.sector);
+                                                                            descripcion);
 
 }
 
-int mostrarEmpleados(eEmpleado arrayEmpleados[], int tam)
+int mostrarEmpleados(eEmpleado arrayEmpleados[], int tam, eSector arraySectores[], int tamSec)
 {
     int retorno=-1;
     int flagEmpleados=0;
@@ -123,9 +152,12 @@ int mostrarEmpleados(eEmpleado arrayEmpleados[], int tam)
         {
             printf("NO HAY EMPLEADOS CARGADOS POR EL MOMENTO...\n");
         }
-        for(int i=0; i<tam && !arrayEmpleados[i].isEmpty; i++)
+        for(int i=0; i<tam; i++)
         {
-            mostrarUnEmpleado(arrayEmpleados[i]);
+            if(!arrayEmpleados[i].isEmpty)
+            {
+                mostrarUnEmpleado(arrayEmpleados[i], arraySectores, tamSec);
+            }
         }
     }
     system("pause");
@@ -171,7 +203,7 @@ static int subMenuOrdenamiento()
     return retorno;
 }
 
-void ordenarEmpleados(eEmpleado arrayEmpleados[], int tam)
+void ordenarEmpleados(eEmpleado arrayEmpleados[], int tam, eSector arraySectores[], int tamSec)
 {
     int criterio;
     int orden;
@@ -264,7 +296,7 @@ void ordenarEmpleados(eEmpleado arrayEmpleados[], int tam)
                     }
                     break;
                 case 6:
-                    if(strcmp(arrayEmpleados[i].sector,arrayEmpleados[j].sector)>0 && orden)
+                    /*if(strcmp(arrayEmpleados[i].sector,arrayEmpleados[j].sector)>0 && orden)
                     {
                         auxEmpleado = arrayEmpleados[i];
                         arrayEmpleados[i] = arrayEmpleados[j];
@@ -275,6 +307,24 @@ void ordenarEmpleados(eEmpleado arrayEmpleados[], int tam)
                         auxEmpleado = arrayEmpleados[i];
                         arrayEmpleados[i] = arrayEmpleados[j];
                         arrayEmpleados[j] = auxEmpleado;
+                    }*/
+                    for(int index1=0; index1>tamSec; index1++)
+                    {
+                        for(int index2=0; index2>tamSec; index2++)
+                        {
+                            if(arrayEmpleados[i].idSector==arraySectores[index1].id && arrayEmpleados[j].idSector==arraySectores[index2].id && orden && strcmp(arraySectores[index1].descripcion, arraySectores[index2].descripcion)>0)
+                            {
+                                auxEmpleado = arrayEmpleados[i];
+                                arrayEmpleados[i] = arrayEmpleados[j];
+                                arrayEmpleados[j] = auxEmpleado;
+                            }
+                            else if(arrayEmpleados[i].idSector==arraySectores[index1].id && arrayEmpleados[j].idSector==arraySectores[index2].id && !orden && strcmp(arraySectores[index1].descripcion, arraySectores[index2].descripcion)<0)
+                            {
+                                auxEmpleado = arrayEmpleados[i];
+                                arrayEmpleados[i] = arrayEmpleados[j];
+                                arrayEmpleados[j] = auxEmpleado;
+                            }
+                        }
                     }
                     break;
                 case 7:
@@ -308,23 +358,59 @@ void ordenarEmpleados(eEmpleado arrayEmpleados[], int tam)
                     }
                     break;
                 case 10:
-                    if(strcmp(arrayEmpleados[i].sector,arrayEmpleados[j].sector)>0||
+                    /*if(strcmp(arrayEmpleados[i].sector,arrayEmpleados[j].sector)>0||
                       (strcmp(arrayEmpleados[i].sector,arrayEmpleados[j].sector)==0&&
                        arrayEmpleados[i].sueldo>arrayEmpleados[j].sueldo))
                     {
                         auxEmpleado = arrayEmpleados[i];
                         arrayEmpleados[i] = arrayEmpleados[j];
                         arrayEmpleados[j] = auxEmpleado;
+                    }*/
+                    for(int index1=0; index1>tamSec; index1++)
+                    {
+                        for(int index2=0; index2>tamSec; index2++)
+                        {
+                            if((arrayEmpleados[i].idSector==arraySectores[index1].id &&
+                                arrayEmpleados[j].idSector==arraySectores[index2].id &&
+                                strcmp(arraySectores[index1].descripcion, arraySectores[index2].descripcion)>0) ||
+                                (arrayEmpleados[i].idSector==arraySectores[index1].id &&
+                                arrayEmpleados[j].idSector==arraySectores[index2].id &&
+                                strcmp(arraySectores[index1].descripcion, arraySectores[index2].descripcion)==0 &&
+                                arrayEmpleados[i].sueldo>arrayEmpleados[j].sueldo))
+                            {
+                                auxEmpleado = arrayEmpleados[i];
+                                arrayEmpleados[i] = arrayEmpleados[j];
+                                arrayEmpleados[j] = auxEmpleado;
+                            }
+                        }
                     }
                     break;
                 case 11:
-                    if(strcmp(arrayEmpleados[i].sector,arrayEmpleados[j].sector)>0||
+                    /*if(strcmp(arrayEmpleados[i].sector,arrayEmpleados[j].sector)>0||
                       (strcmp(arrayEmpleados[i].sector,arrayEmpleados[j].sector)==0&&
                        strcmp(arrayEmpleados[i].nombre,arrayEmpleados[j].nombre)>0))
                     {
                         auxEmpleado = arrayEmpleados[i];
                         arrayEmpleados[i] = arrayEmpleados[j];
                         arrayEmpleados[j] = auxEmpleado;
+                    }*/
+                    for(int index1=0; index1>tamSec; index1++)
+                    {
+                        for(int index2=0; index2>tamSec; index2++)
+                        {
+                            if((arrayEmpleados[i].idSector==arraySectores[index1].id &&
+                                arrayEmpleados[j].idSector==arraySectores[index2].id &&
+                                strcmp(arraySectores[index1].descripcion, arraySectores[index2].descripcion)>0) ||
+                                (arrayEmpleados[i].idSector==arraySectores[index1].id &&
+                                arrayEmpleados[j].idSector==arraySectores[index2].id &&
+                                strcmp(arraySectores[index1].descripcion, arraySectores[index2].descripcion)==0 &&
+                                strcmp(arrayEmpleados[i].nombre, arrayEmpleados[j].nombre)>0))
+                            {
+                                auxEmpleado = arrayEmpleados[i];
+                                arrayEmpleados[i] = arrayEmpleados[j];
+                                arrayEmpleados[j] = auxEmpleado;
+                            }
+                        }
                     }
                     break;
                 case 12:
@@ -353,6 +439,8 @@ int menuOpciones()
     printf("5) Ordenar Empleados.\n");
     printf("6) Mostrar Sectores.\n");
     printf("7) Informes.\n");
+    printf("8) Actualizar Sueldo por Sector.\n");
+    printf("9) Totales Sueldos.\n");
     printf("12) Salir.\n");
     if(dam_getNumero(&retorno, "Ingrese una opcion: ","ERROR, opcion invalida.",1,12,10)==-1)
     {
@@ -413,12 +501,12 @@ int altaEmpleado(eEmpleado arrayEmpleados[], int tam, int* pId, eSector arraySec
     return retorno;
 }
 
-static int buscarEmpleado(eEmpleado arrayEmpleados[], int tam)
+static int buscarEmpleado(eEmpleado arrayEmpleados[], int tam, eSector arraySectores[], int tamSec)
 {
     int indice=-1;
     int legajoBuscado;
     if(arrayEmpleados!=NULL && tam>0 &&
-       !mostrarEmpleados(arrayEmpleados,tam) &&
+       !mostrarEmpleados(arrayEmpleados,tam, arraySectores, tamSec) &&
        !dam_getNumero(&legajoBuscado,"\n\nIngrese el legajo del empleado: ","ERROR. Legajo no valido.\n",1,999999,10))
     {
         for(int i=0; i<tam; i++)
@@ -458,7 +546,6 @@ int modificarEmpleado(eEmpleado arrayEmpleados[], int tam, eSector arraySectores
     int indice;
     int opcion;
     eEmpleado auxEmpleado;
-    int auxIdSector;
     int flagNombre=1;
     int flagSexo=1;
     int flagEdad=1;
@@ -469,7 +556,7 @@ int modificarEmpleado(eEmpleado arrayEmpleados[], int tam, eSector arraySectores
 
     if(arrayEmpleados!=NULL && tam>0)
     {
-        indice = buscarEmpleado(arrayEmpleados,tam);
+        indice = buscarEmpleado(arrayEmpleados,tam,arraySectores,tamSec);
         if(indice==-1)
         {
             printf("No se encontro ningun empleado con ese legajo.\n");
@@ -478,7 +565,7 @@ int modificarEmpleado(eEmpleado arrayEmpleados[], int tam, eSector arraySectores
         {
             printf("Empleado encontrado:\n");
             printf("Legajo     Nombre   Edad Sexo    Sueldo     Fecha de Ingreso        Sector\n");
-            mostrarUnEmpleado(arrayEmpleados[indice]);
+            mostrarUnEmpleado(arrayEmpleados[indice], arraySectores, tamSec);
 
             do{
                 opcion = menuModificaciones();
@@ -506,16 +593,9 @@ int modificarEmpleado(eEmpleado arrayEmpleados[], int tam, eSector arraySectores
                     break;
                 case 6:
                     mostrarSectores(arraySectores, tamSec);
-                    if(!dam_getNumero(&auxIdSector,"Ingrese ID del nuevo sector: ","Error. ",500,503,10))
+                    if(!dam_getNumero(&auxEmpleado.idSector,"Ingrese ID del nuevo sector: ","Error. ",500,503,10))
                     {
-                        for(int i=0; i<tamSec; i++)
-                        {
-                            if(arraySectores[i].id==auxIdSector)
-                            {
-                                strcpy(auxEmpleado.sector,arraySectores[i].descripcion);
-                                flagSector=0;
-                            }
-                        }
+                        flagSector=0;
                     }
                     break;
                 case 7:
@@ -543,10 +623,10 @@ int modificarEmpleado(eEmpleado arrayEmpleados[], int tam, eSector arraySectores
                     }
                     if(!flagSector)
                     {
-                        strcpy(arrayEmpleados[indice].sector,auxEmpleado.sector);
+                        arrayEmpleados[indice].idSector=auxEmpleado.idSector;
                     }
                     printf("\nEmpleado modificado!\n");
-                    mostrarUnEmpleado(arrayEmpleados[indice]);
+                    mostrarUnEmpleado(arrayEmpleados[indice], arraySectores, tamSec);
                     printf("\nCambios guardados, volviendo al menu principal...\n\n");
                     retorno=0;
                     break;
@@ -560,7 +640,7 @@ int modificarEmpleado(eEmpleado arrayEmpleados[], int tam, eSector arraySectores
     return retorno;
 }
 
-int bajaEmpleado(eEmpleado arrayEmpleados[], int tam)
+int bajaEmpleado(eEmpleado arrayEmpleados[], int tam, eSector arraySectores[], int tamSec)
 {
     int retorno=-1;
     char confirm='n';
@@ -570,7 +650,7 @@ int bajaEmpleado(eEmpleado arrayEmpleados[], int tam)
     printf("     Baja Empleado\n\n");
     if(arrayEmpleados!=NULL && tam>0)
     {
-        indice=buscarEmpleado(arrayEmpleados, tam);
+        indice=buscarEmpleado(arrayEmpleados, tam, arraySectores, tamSec);
         if(indice==-1)
         {
             printf("No se encontro ningun empleado con ese legajo.\n");
@@ -579,11 +659,15 @@ int bajaEmpleado(eEmpleado arrayEmpleados[], int tam)
         {
             printf("Empleado encontrado:\n");
             printf("Legajo     Nombre   Edad Sexo    Sueldo     Fecha de Ingreso        Sector\n");
-            mostrarUnEmpleado(arrayEmpleados[indice]);
+            mostrarUnEmpleado(arrayEmpleados[indice], arraySectores, tamSec);
             if(!dam_getCaracter(&confirm,"Seguro desea dar de baja a este empleado? (s/n): ", "ERROR.\n",'s','n',10) && confirm=='s')
             {
                 arrayEmpleados[indice].isEmpty=1;
                 retorno = 0;
+            }
+            else
+            {
+                printf("Baja cancelada.\n");
             }
         }
     }
