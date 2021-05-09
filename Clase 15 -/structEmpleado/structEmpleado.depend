@@ -1,0 +1,331 @@
+# depslib dependency file v1.0
+1619224492 source:c:\users\usuario\documents\programacion 2021\programacion2021-1g\clase 11 -\estructuraempleado\structempleado\empleado.c
+	<stdio.h>
+	<stdlib.h>
+	"dam.h"
+	"empleado.h"
+
+1619223667 c:\users\usuario\documents\programacion 2021\programacion2021-1g\clase 11 -\estructuraempleado\structempleado\empleado.h
+
+1619224348 source:c:\users\usuario\documents\programacion 2021\programacion2021-1g\clase 11 -\estructuraempleado\structempleado\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"empleado.h"
+
+1618892305 source:c:\users\usuario\documents\programacion 2021\programacion2021-1g\clase 11 -\estructuraempleado\structempleado\dam.c
+	"dam.h"
+
+1618892031 c:\users\usuario\documents\programacion 2021\programacion2021-1g\clase 11 -\estructuraempleado\structempleado\dam.h
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+
+1619398120 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 11 -\structempleado\dam.c
+	"dam.h"
+
+1619398126 c:\users\usuario\documents\programacion 2021\programacion2021\clase 11 -\structempleado\dam.h
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+
+1619484960 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 11 -\structempleado\empleado.c
+	<stdio.h>
+	<stdlib.h>
+	"dam.h"
+	"empleado.h"
+
+1619474461 c:\users\usuario\documents\programacion 2021\programacion2021\clase 11 -\structempleado\empleado.h
+
+1619482587 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 11 -\structempleado\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"dam.h"
+	"empleado.h"
+
+1619398120 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 12 -\structempleado\dam.c
+	"dam.h"
+
+1619398126 c:\users\usuario\documents\programacion 2021\programacion2021\clase 12 -\structempleado\dam.h
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+
+1619576622 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 12 -\structempleado\sector.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"sector.h"
+	"empleado.h"
+	"dam.h"
+
+1619487059 c:\users\usuario\documents\programacion 2021\programacion2021\clase 12 -\structempleado\sector.h
+
+1619578427 c:\users\usuario\documents\programacion 2021\programacion2021\clase 12 -\structempleado\empleado.h
+	"sector.h"
+
+1619578414 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 12 -\structempleado\empleado.c
+	<stdio.h>
+	<stdlib.h>
+	"dam.h"
+	"empleado.h"
+
+1619578449 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 12 -\structempleado\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"dam.h"
+	"empleado.h"
+
+1619398120 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 12 - abm + estructuras relacionadas\structempleado\dam.c
+	"dam.h"
+
+1619398126 c:\users\usuario\documents\programacion 2021\programacion2021\clase 12 - abm + estructuras relacionadas\structempleado\dam.h
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+
+1619576622 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 12 - abm + estructuras relacionadas\structempleado\sector.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"sector.h"
+	"empleado.h"
+	"dam.h"
+
+1619487059 c:\users\usuario\documents\programacion 2021\programacion2021\clase 12 - abm + estructuras relacionadas\structempleado\sector.h
+
+1619658091 c:\users\usuario\documents\programacion 2021\programacion2021\clase 12 - abm + estructuras relacionadas\structempleado\empleado.h
+	"sector.h"
+
+1619659526 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 12 - abm + estructuras relacionadas\structempleado\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"dam.h"
+	"empleado.h"
+
+1619658702 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 12 - abm + estructuras relacionadas\structempleado\empleado.c
+	<stdio.h>
+	<stdlib.h>
+	"dam.h"
+	"empleado.h"
+
+1619398120 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 13 -\structempleado\dam.c
+	"dam.h"
+
+1619398126 c:\users\usuario\documents\programacion 2021\programacion2021\clase 13 -\structempleado\dam.h
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+
+1619911962 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 13 -\structempleado\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"dam.h"
+	"empleado.h"
+	"sector.h"
+
+1619925659 c:\users\usuario\documents\programacion 2021\programacion2021\clase 13 -\structempleado\empleado.h
+	"sector.h"
+
+1619894001 c:\users\usuario\documents\programacion 2021\programacion2021\clase 13 -\structempleado\sector.h
+
+1619893998 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 13 -\structempleado\sector.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"sector.h"
+	"empleado.h"
+	"dam.h"
+
+1619925650 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 13 -\structempleado\empleado.c
+	<stdio.h>
+	<stdlib.h>
+	"dam.h"
+	"empleado.h"
+	"sector.h"
+	"dataWarehouse.h"
+
+1619898042 c:\users\usuario\documents\programacion 2021\programacion2021\clase 13 -\structempleado\datawarehouse.h
+
+1619925522 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 13 -\structempleado\almuerzo.c
+	<stdio.h>
+	<stdlib.h>
+	"dam.h"
+
+1620446316 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 14 -\structempleado\almuerzo.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"almuerzo.h"
+	"dam.h"
+	"empleado.h"
+
+1619398126 c:\users\usuario\documents\programacion 2021\programacion2021\clase 14 -\structempleado\dam.h
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+
+1619398120 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 14 -\structempleado\dam.c
+	"dam.h"
+
+1620444334 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 14 -\structempleado\sector.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"sector.h"
+	"empleado.h"
+	"dam.h"
+
+1620444340 c:\users\usuario\documents\programacion 2021\programacion2021\clase 14 -\structempleado\sector.h
+
+1620445942 c:\users\usuario\documents\programacion 2021\programacion2021\clase 14 -\structempleado\empleado.h
+	"fecha.h"
+	"sector.h"
+
+1620446239 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 14 -\structempleado\empleado.c
+	<stdio.h>
+	<stdlib.h>
+	"dam.h"
+	"empleado.h"
+	"sector.h"
+	"dataWarehouse.h"
+
+1619898042 c:\users\usuario\documents\programacion 2021\programacion2021\clase 14 -\structempleado\datawarehouse.h
+
+1620446125 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 14 -\structempleado\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"dam.h"
+	"empleado.h"
+	"sector.h"
+	"informes.h"
+	"comida.h"
+	"almuerzo.h"
+
+1620078981 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 14 -\structempleado\informes.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"informes.h"
+	"empleado.h"
+	"sector.h"
+	"dam.h"
+
+1620079353 c:\users\usuario\documents\programacion 2021\programacion2021\clase 14 -\structempleado\informes.h
+	"empleado.h"
+
+1620082049 c:\users\usuario\documents\programacion 2021\programacion2021\clase 14 -\structempleado\fecha.h
+
+1620445991 c:\users\usuario\documents\programacion 2021\programacion2021\clase 14 -\structempleado\almuerzo.h
+	"fecha.h"
+	"empleado.h"
+	"sector.h"
+	"comida.h"
+
+1620444651 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 14 -\structempleado\comida.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"comida.h"
+	"dam.h"
+
+1620444647 c:\users\usuario\documents\programacion 2021\programacion2021\clase 14 -\structempleado\comida.h
+
+1619398120 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 15 -\structempleado\dam.c
+	"dam.h"
+
+1619398126 c:\users\usuario\documents\programacion 2021\programacion2021\clase 15 -\structempleado\dam.h
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+
+1620078981 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 15 -\structempleado\informes.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"informes.h"
+	"empleado.h"
+	"sector.h"
+	"dam.h"
+
+1620449038 c:\users\usuario\documents\programacion 2021\programacion2021\clase 15 -\structempleado\informes.h
+	"empleado.h"
+
+1620448993 c:\users\usuario\documents\programacion 2021\programacion2021\clase 15 -\structempleado\empleado.h
+	"fecha.h"
+	"sector.h"
+
+1620082049 c:\users\usuario\documents\programacion 2021\programacion2021\clase 15 -\structempleado\fecha.h
+
+1620444340 c:\users\usuario\documents\programacion 2021\programacion2021\clase 15 -\structempleado\sector.h
+
+1620444651 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 15 -\structempleado\comida.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"comida.h"
+	"dam.h"
+
+1620444647 c:\users\usuario\documents\programacion 2021\programacion2021\clase 15 -\structempleado\comida.h
+
+1620599170 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 15 -\structempleado\empleado.c
+	<stdio.h>
+	<stdlib.h>
+	"dam.h"
+	"empleado.h"
+
+1620448682 c:\users\usuario\documents\programacion 2021\programacion2021\clase 15 -\structempleado\datawarehouse.h
+	"fecha.h"
+	"empleado.h"
+	"almuerzo.h"
+
+1620448967 c:\users\usuario\documents\programacion 2021\programacion2021\clase 15 -\structempleado\almuerzo.h
+	"empleado.h"
+	"sector.h"
+	"comida.h"
+	"fecha.h"
+
+1620583819 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 15 -\structempleado\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"dam.h"
+	"empleado.h"
+	"sector.h"
+	"informes.h"
+	"comida.h"
+	"almuerzo.h"
+	"dataWarehouse.h"
+
+1620449069 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 15 -\structempleado\sector.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"sector.h"
+	"dam.h"
+
+1620449063 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 15 -\structempleado\almuerzo.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"almuerzo.h"
+	"dam.h"
+
+1620598952 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 15 -\structempleado\datawarehouse.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"dataWarehouse.h"
+
