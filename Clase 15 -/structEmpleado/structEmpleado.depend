@@ -269,7 +269,7 @@
 
 1620082049 c:\users\usuario\documents\programacion 2021\programacion2021\clase 15 -\structempleado\fecha.h
 
-1620444340 c:\users\usuario\documents\programacion 2021\programacion2021\clase 15 -\structempleado\sector.h
+1620602028 c:\users\usuario\documents\programacion 2021\programacion2021\clase 15 -\structempleado\sector.h
 
 1620444651 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 15 -\structempleado\comida.c
 	<stdio.h>
@@ -280,7 +280,7 @@
 
 1620444647 c:\users\usuario\documents\programacion 2021\programacion2021\clase 15 -\structempleado\comida.h
 
-1620599170 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 15 -\structempleado\empleado.c
+1620602737 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 15 -\structempleado\empleado.c
 	<stdio.h>
 	<stdlib.h>
 	"dam.h"
@@ -297,7 +297,7 @@
 	"comida.h"
 	"fecha.h"
 
-1620583819 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 15 -\structempleado\main.c
+1620608007 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 15 -\structempleado\main.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
@@ -309,21 +309,21 @@
 	"almuerzo.h"
 	"dataWarehouse.h"
 
-1620449069 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 15 -\structempleado\sector.c
+1620602626 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 15 -\structempleado\sector.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"sector.h"
 	"dam.h"
 
-1620449063 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 15 -\structempleado\almuerzo.c
+1620606917 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 15 -\structempleado\almuerzo.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>
 	"almuerzo.h"
 	"dam.h"
 
-1620598952 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 15 -\structempleado\datawarehouse.c
+1620608060 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 15 -\structempleado\datawarehouse.c
 	<stdio.h>
 	<stdlib.h>
 	<string.h>

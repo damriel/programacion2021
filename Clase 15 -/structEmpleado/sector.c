@@ -42,3 +42,20 @@ int cargarDescripcionSector(int id, eSector aSectores[], int tamSec, char descri
     }
     return retorno;
 }
+
+int buscarSector(eSector aSectores[], int tamSec, int idBuscado)
+{
+    int indice=-1;
+    if(aSectores!=NULL && tamSec>0)
+    {
+        for(int i=0; i<tamSec; i++)
+        {
+            if(idBuscado==aSectores[i].id)
+            {
+                indice=i;
+                break;
+            }
+        }
+    }
+    return indice;
+}

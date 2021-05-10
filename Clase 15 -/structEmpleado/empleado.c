@@ -391,6 +391,7 @@ int menuOpciones()
     printf("13) Sectores que mas cobran.\n");
     printf("14) Almuerzos Empleado.\n");
     printf("15) Total Gasto Almuerzo.\n");
+    printf("16) Sumatoria gastos de un sector.\n");
     printf("20) Salir.\n");
     if(dam_getNumero(&retorno, "Ingrese una opcion: ","ERROR, opcion invalida.",1,20,10)==-1)
     {

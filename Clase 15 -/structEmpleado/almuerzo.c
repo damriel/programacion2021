@@ -121,7 +121,6 @@ int mostrarAlmuerzos(eAlmuerzo aAlmuerzos[], int tam, eComida aComidas[], int ta
             printf("No hay almuerzos cargados.\n");
         }
     }
-    system("pause");
     return retorno;
 }
 

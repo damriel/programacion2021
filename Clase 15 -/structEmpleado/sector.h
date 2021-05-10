@@ -11,3 +11,4 @@ typedef struct{
 int mostrarSectores(eSector aSectores[], int tamSec);
 int mostrarUnSector(eSector unSector);
 int cargarDescripcionSector(int id, eSector aSectores[], int tamSec, char descripcion[]);
+int buscarSector(eSector aSectores[], int tamSec, int idBuscado);
