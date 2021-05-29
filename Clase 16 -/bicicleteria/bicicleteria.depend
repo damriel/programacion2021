@@ -1,0 +1,72 @@
+# depslib dependency file v1.0
+1621027155 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 16 -\bicicleteria\dam.c
+	<stdio.h>
+	<stdlib.h>
+	<ctype.h>
+	<string.h>
+	"dam.h"
+
+1621027146 c:\users\usuario\documents\programacion 2021\programacion2021\clase 16 -\bicicleteria\dam.h
+
+1621024640 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 16 -\bicicleteria\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"dam.h"
+	"datawarehouse.h"
+	"bicicleta.h"
+
+1620948858 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 16 -\bicicleteria\fecha.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"fecha.h"
+
+1620948944 c:\users\usuario\documents\programacion 2021\programacion2021\clase 16 -\bicicleteria\fecha.h
+
+1621024720 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 16 -\bicicleteria\bicicleta.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"dam.h"
+	"bicicleta.h"
+
+1621022818 c:\users\usuario\documents\programacion 2021\programacion2021\clase 16 -\bicicleteria\bicicleta.h
+	"tipo.h"
+	"color.h"
+
+1621022760 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 16 -\bicicleteria\color.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"color.h"
+
+1621024066 c:\users\usuario\documents\programacion 2021\programacion2021\clase 16 -\bicicleteria\color.h
+
+1620954161 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 16 -\bicicleteria\datawarehouse.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"datawarehouse.h"
+
+1620954319 c:\users\usuario\documents\programacion 2021\programacion2021\clase 16 -\bicicleteria\datawarehouse.h
+	"tipo.h"
+	"color.h"
+	"servicio.h"
+
+1620949725 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 16 -\bicicleteria\servicio.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"servicio.h"
+
+1620949694 c:\users\usuario\documents\programacion 2021\programacion2021\clase 16 -\bicicleteria\servicio.h
+
+1621022694 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 16 -\bicicleteria\tipo.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"tipo.h"
+
+1621022412 c:\users\usuario\documents\programacion 2021\programacion2021\clase 16 -\bicicleteria\tipo.h
+
