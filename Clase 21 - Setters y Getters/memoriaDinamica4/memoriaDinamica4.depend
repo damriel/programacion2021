@@ -1,0 +1,10 @@
+# depslib dependency file v1.0
+1622250636 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 20 -\memoriadinamica4\main.c
+	<stdio.h>
+	<stdlib.h>
+
+1622508882 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 21 - memoria dinamica - copia\memoriadinamica4\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
