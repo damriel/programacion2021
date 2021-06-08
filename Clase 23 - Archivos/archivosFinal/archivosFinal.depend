@@ -1,0 +1,16 @@
+# depslib dependency file v1.0
+1623122662 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 23 - archivos\archivosfinal\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	<ctype.h>
+	"empleado.h"
+
+1622948853 c:\users\usuario\documents\programacion 2021\programacion2021\clase 23 - archivos\archivosfinal\empleado.h
+
+1623122218 source:c:\users\usuario\documents\programacion 2021\programacion2021\clase 23 - archivos\archivosfinal\empleado.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"empleado.h"
+
